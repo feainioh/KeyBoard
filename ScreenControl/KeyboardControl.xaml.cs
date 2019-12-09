@@ -1281,7 +1281,7 @@ namespace SreenControl
             if (_CurrentControl != null && _InstanceObject != null)
             {
                 double h =_CurrentControl.ActualHeight;
-                Point virtualpoint = new Point(0,0);
+                Point virtualpoint = new Point(0,h);
                 Point Actualpoint = _CurrentControl.PointToScreen(virtualpoint);
                 if (WidthTouchKeyboard + Actualpoint.X > SystemParameters.VirtualScreenWidth)
                 {
@@ -1303,7 +1303,7 @@ namespace SreenControl
                 }
                 else
                 {
-                    _InstanceObject.Top = Actualpoint.Y-h*0.1;
+                    _InstanceObject.Top = Actualpoint.Y;
                 }
 
                 _InstanceObject.Show();
