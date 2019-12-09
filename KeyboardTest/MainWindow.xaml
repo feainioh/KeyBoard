@@ -1,0 +1,71 @@
+﻿<Window x:Class="KeyboardTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyboardTest"
+        xmlns:b ="clr-namespace:SreenControl;assembly=SreenControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button FontSize="30" Content="Test:" TabIndex="10" Background="#FFFF5050"></Button>            
+            <TextBox FontSize="30" Width="300"  b:KeyboardControl.KeyboardControl="True"
+                     b:KeyboardControl.BoardBackground="#FF404040"
+                     b:KeyboardControl.ButtonBackground="#FF636363"
+                     b:KeyboardControl.ButtonForeground="#FF9F9F9F"
+                     b:KeyboardControl.PressedBackground="#FF9F9F9F"
+                     b:KeyboardControl.MouseOverBackground="#FFD7D5D5"
+                     b:KeyboardControl.MouseOverForeground="#FF795B5B"
+                     b:KeyboardControl.ButtonCornerRadius="50"
+                     b:KeyboardControl.BoardCornerRadius="14"
+                     b:KeyboardControl.ShadowForeground="AliceBlue"
+                     TabIndex="0"  ></TextBox>
+                <PasswordBox FontSize="30" Width="300"  b:KeyboardControl.KeyPadControl="True"
+                     b:KeyboardControl.BoardBackground="#FF404040"
+                     b:KeyboardControl.ButtonBackground="#FF636363"
+                     b:KeyboardControl.ButtonForeground="#FF9F9F9F"
+                     b:KeyboardControl.PressedBackground="#FF9F9F9F"
+                     b:KeyboardControl.MouseOverBackground="#FFD7D5D5"
+                     b:KeyboardControl.MouseOverForeground="#FF795B5B"
+                     b:KeyboardControl.ButtonCornerRadius="4"
+                     b:KeyboardControl.ShadowForeground="AliceBlue"></PasswordBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button FontSize="30" Content="Test:" TabIndex="10" Background="#FFFF5050" b:KeyboardControl.KeyboardControl="True"></Button>
+            <ComboBox FontSize="30" Width="300" IsEditable="True"  b:KeyboardControl.KeyboardControl="True"
+                     b:KeyboardControl.BoardBackground="#FF404040"
+                     b:KeyboardControl.ButtonBackground="#FF636363"
+                     b:KeyboardControl.ButtonForeground="#FF9F9F9F"
+                     b:KeyboardControl.PressedBackground="#FF9F9F9F"
+                     b:KeyboardControl.MouseOverBackground="#FFD7D5D5"
+                     b:KeyboardControl.MouseOverForeground="#FF795B5B"
+                     b:KeyboardControl.ButtonCornerRadius="4"
+                     b:KeyboardControl.ShadowForeground="AliceBlue"
+                     TabIndex="0"  ></ComboBox>
+        </StackPanel>
+        <DataGrid x:Name="list_grid" Grid.Row="2" b:KeyboardControl.KeyboardControl="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="处方数" Binding="{Binding Name}" />
+            </DataGrid.Columns>            
+        </DataGrid>
+        <RichTextBox Grid.Row="4" b:KeyboardControl.KeyboardControl="True"
+                     b:KeyboardControl.BoardBackground="#FF404040"
+                     b:KeyboardControl.ButtonBackground="#FF636363"
+                     b:KeyboardControl.ButtonForeground="#FF9F9F9F"
+                     b:KeyboardControl.PressedBackground="#FF9F9F9F"
+                     b:KeyboardControl.MouseOverBackground="#FFD7D5D5"
+                     b:KeyboardControl.MouseOverForeground="#FF795B5B"
+                     b:KeyboardControl.ButtonCornerRadius="4"
+                     b:KeyboardControl.ShadowForeground="AliceBlue"></RichTextBox>
+    </Grid>
+</Window>
