@@ -30,7 +30,7 @@
                      b:KeyboardControl.BoardCornerRadius="14"
                      b:KeyboardControl.ShadowForeground="AliceBlue"
                      TabIndex="0"  ></TextBox>
-                <PasswordBox FontSize="30" Width="300"  b:KeyboardControl.KeyPadControl="True"
+                <PasswordBox FontSize="30" Width="300"  b:KeyboardControl.KeyPadControl="False"
                      b:KeyboardControl.BoardBackground="#FF404040"
                      b:KeyboardControl.ButtonBackground="#FF636363"
                      b:KeyboardControl.ButtonForeground="#FF9F9F9F"
@@ -39,6 +39,9 @@
                      b:KeyboardControl.MouseOverForeground="#FF795B5B"
                      b:KeyboardControl.ButtonCornerRadius="4"
                      b:KeyboardControl.ShadowForeground="AliceBlue"></PasswordBox>
+            <Popup StaysOpen="False" >
+                
+            </Popup>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Button FontSize="30" Content="Test:" TabIndex="10" Background="#FFFF5050" b:KeyboardControl.KeyboardControl="True"></Button>

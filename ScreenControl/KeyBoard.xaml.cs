@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace SreenControl
 {
     /// <summary>
-    /// KeyboardControl.xaml 的交互逻辑
+    /// KeyBoard.xaml 的交互逻辑
     /// </summary>
-    public partial class KeyboardControl : Window
+    public partial class KeyBoard : UserControl
     {
-        public KeyboardControl()
+        public KeyBoard()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -66,7 +65,7 @@ namespace SreenControl
         /// 按钮背景色
         /// </summary>
         private static readonly DependencyProperty ButtonBackgroundProperty =
-            DependencyProperty.RegisterAttached("ButtonBackground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.Black, new PropertyChangedCallback(Callback_ChangeBackground)));
+            DependencyProperty.RegisterAttached("ButtonBackground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.Black, new PropertyChangedCallback(Callback_ChangeBackground)));
 
         private static void Callback_ChangeBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -90,7 +89,7 @@ namespace SreenControl
         /// 按钮前景色
         /// </summary>
         private static readonly DependencyProperty ButtonForegroundProperty =
-            DependencyProperty.RegisterAttached("ButtonForeground", typeof(Brush), typeof(KeyboardControl), new FrameworkPropertyMetadata(Brushes.White, new PropertyChangedCallback(CallBack_ButtonForeground)));
+            DependencyProperty.RegisterAttached("ButtonForeground", typeof(Brush), typeof(KeyBoard), new FrameworkPropertyMetadata(Brushes.White, new PropertyChangedCallback(CallBack_ButtonForeground)));
 
         private static void CallBack_ButtonForeground(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {
@@ -114,7 +113,7 @@ namespace SreenControl
         /// 按钮前景色
         /// </summary>
         private static readonly DependencyProperty ShadowForegroundProperty =
-            DependencyProperty.RegisterAttached("ShadowForeground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_ShadowForeground)));
+            DependencyProperty.RegisterAttached("ShadowForeground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_ShadowForeground)));
 
         private static void CallBack_ShadowForeground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -139,7 +138,7 @@ namespace SreenControl
         ///// 按钮边框颜色
         ///// </summary>
         //private static readonly DependencyProperty ButtonBorderBrushProperty =
-        //    DependencyProperty.RegisterAttached("ButtonBorderBrush", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_ButtonBorderBrush)));
+        //    DependencyProperty.RegisterAttached("ButtonBorderBrush", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_ButtonBorderBrush)));
 
         //private static void CallBack_ButtonBorderBrush(DependencyObject d, DependencyPropertyChangedEventArgs e)
         //{
@@ -159,7 +158,7 @@ namespace SreenControl
         ///// 按钮边框厚度
         ///// </summary>
         //private static readonly DependencyProperty ButtonBorderThicknessProperty =
-        //    DependencyProperty.RegisterAttached("ButtonBorderThickness", typeof(Thickness), typeof(KeyboardControl), new PropertyMetadata(new Thickness(0,0,0,0), new PropertyChangedCallback(CallBack_Thickness)));
+        //    DependencyProperty.RegisterAttached("ButtonBorderThickness", typeof(Thickness), typeof(KeyBoard), new PropertyMetadata(new Thickness(0,0,0,0), new PropertyChangedCallback(CallBack_Thickness)));
 
         //private static void CallBack_Thickness(DependencyObject d, DependencyPropertyChangedEventArgs e)
         //{
@@ -180,7 +179,7 @@ namespace SreenControl
         /// 悬停前景色
         /// </summary>
         private static readonly DependencyProperty MouseOverForegroundProperty =
-            DependencyProperty.RegisterAttached("MouseOverForeground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.DarkGray, new PropertyChangedCallback(CallBack_MouseOverForeground)));
+            DependencyProperty.RegisterAttached("MouseOverForeground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.DarkGray, new PropertyChangedCallback(CallBack_MouseOverForeground)));
 
         private static void CallBack_MouseOverForeground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -204,7 +203,7 @@ namespace SreenControl
         /// 悬停背景色
         /// </summary>
         private static readonly DependencyProperty MouseOverBackgroundProperty =
-            DependencyProperty.RegisterAttached("MouseOverBackground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.White, new PropertyChangedCallback(CallBack_MouseOverBackground)));
+            DependencyProperty.RegisterAttached("MouseOverBackground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.White, new PropertyChangedCallback(CallBack_MouseOverBackground)));
 
         private static void CallBack_MouseOverBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -228,7 +227,7 @@ namespace SreenControl
         /// 按下背景色
         /// </summary>
         private static readonly DependencyProperty PressedBackgroundProperty =
-            DependencyProperty.RegisterAttached("PressedBackground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_PressedForeground)));
+            DependencyProperty.RegisterAttached("PressedBackground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_PressedForeground)));
 
         private static void CallBack_PressedForeground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -251,7 +250,7 @@ namespace SreenControl
         /// 焦点边框色
         /// </summary>
         private static readonly DependencyProperty FocusedBorderBrushProperty =
-            DependencyProperty.RegisterAttached("FocusedBorderBrush", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_FoucsedBorderBrush)));
+            DependencyProperty.RegisterAttached("FocusedBorderBrush", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.Gray, new PropertyChangedCallback(CallBack_FoucsedBorderBrush)));
 
         private static void CallBack_FoucsedBorderBrush(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -275,7 +274,7 @@ namespace SreenControl
         /// 键盘背景色
         /// </summary>
         public static readonly DependencyProperty BoardBackgroundProperty =
-            DependencyProperty.RegisterAttached("BoardBackground", typeof(Brush), typeof(KeyboardControl), new PropertyMetadata(Brushes.DarkGray, new PropertyChangedCallback(CallBack_BoardBackground)));
+            DependencyProperty.RegisterAttached("BoardBackground", typeof(Brush), typeof(KeyBoard), new PropertyMetadata(Brushes.DarkGray, new PropertyChangedCallback(CallBack_BoardBackground)));
 
         private static void CallBack_BoardBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -303,7 +302,7 @@ namespace SreenControl
         /// 按钮圆角设置
         /// </summary>
         public static readonly DependencyProperty ButtonCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ButtonCornerRadius", typeof(CornerRadius), typeof(KeyboardControl), new PropertyMetadata(new CornerRadius(0), new PropertyChangedCallback(CallBack_CornerRadius)));
+            DependencyProperty.RegisterAttached("ButtonCornerRadius", typeof(CornerRadius), typeof(KeyBoard), new PropertyMetadata(new CornerRadius(0), new PropertyChangedCallback(CallBack_CornerRadius)));
 
         private static void CallBack_CornerRadius(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -326,7 +325,7 @@ namespace SreenControl
         /// 圆角设置
         /// </summary>
         public static readonly DependencyProperty BoardCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("BoardCornerRadius", typeof(CornerRadius), typeof(KeyboardControl), new PropertyMetadata(new CornerRadius(0), new PropertyChangedCallback(CallBack_BoardCornerRadius)));
+            DependencyProperty.RegisterAttached("BoardCornerRadius", typeof(CornerRadius), typeof(KeyBoard), new PropertyMetadata(new CornerRadius(0), new PropertyChangedCallback(CallBack_BoardCornerRadius)));
 
         private static void CallBack_BoardCornerRadius(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -365,8 +364,8 @@ namespace SreenControl
 
         protected static bool CapsLockFlag
         {
-            get { return KeyboardControl._CapsLockFlag; }
-            set { KeyboardControl._CapsLockFlag = value; }
+            get { return KeyBoard._CapsLockFlag; }
+            set { KeyBoard._CapsLockFlag = value; }
         }
 
         private static Window _InstanceObject;
@@ -558,17 +557,17 @@ namespace SreenControl
             CommandBinding PadCbDot = new CommandBinding(PadCmdDot, RunCommand_Pad);
 
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb1);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb2);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb3);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb4);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb5);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb6);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb7);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb8);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb9);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCb0);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCbDot);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb1);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb2);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb3);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb4);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb5);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb6);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb7);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb8);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb9);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCb0);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCbDot);
 
 
             CommandBinding PadCbEnter = new CommandBinding(PadCmdEnter, RunCommand_Pad);
@@ -576,10 +575,10 @@ namespace SreenControl
             CommandBinding PadCbClear = new CommandBinding(PadCmdClear, RunCommand_Pad);
             CommandBinding PadCbClose = new CommandBinding(PadCmdClose, RunCommand_Pad);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCbEnter);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCbEnter);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCbClear);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), PadCbClose);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCbClear);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), PadCbClose);
             #endregion
             #region 全键盘
             CommandBinding CbTlide = new CommandBinding(CmdTlide, RunCommand);
@@ -598,21 +597,21 @@ namespace SreenControl
             CommandBinding CbBackspace = new CommandBinding(CmdBackspace, RunCommand);
             CommandBinding CbDot = new CommandBinding(CmdDot, RunCommand);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbTlide);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb1);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb2);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb3);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb4);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb5);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb6);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb7);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb8);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb9);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cb0);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbDot);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbMinus);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbPlus);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbBackspace);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbTlide);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb1);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb2);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb3);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb4);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb5);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb6);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb7);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb8);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb9);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cb0);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbDot);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbMinus);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbPlus);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbBackspace);
 
 
             CommandBinding CbTab = new CommandBinding(CmdTab, RunCommand);
@@ -662,52 +661,52 @@ namespace SreenControl
             CommandBinding CbClear = new CommandBinding(CmdClear, RunCommand);
             CommandBinding CbClose = new CommandBinding(CmdClose, RunCommand);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbTab);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbQ);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cbw);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbE);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbR);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbT);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbY);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbU);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbI);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), Cbo);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbP);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbOpenCrulyBrace);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbEndCrultBrace);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbOR);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbTab);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbQ);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cbw);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbE);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbR);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbT);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbY);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbU);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbI);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), Cbo);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbP);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbOpenCrulyBrace);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbEndCrultBrace);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbOR);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbCapsLock);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbA);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbS);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbD);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbF);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbG);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbH);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbJ);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbK);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbL);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbColon);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbDoubleInvertedComma);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbEnter);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbCapsLock);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbA);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbS);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbD);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbF);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbG);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbH);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbJ);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbK);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbL);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbColon);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbDoubleInvertedComma);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbEnter);
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbShift);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbZ);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbX);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbC);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbV);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbB);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbN);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbM);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbGreaterThan);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbLessThan);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbQuestion);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbShift);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbZ);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbX);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbC);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbV);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbB);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbN);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbM);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbGreaterThan);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbLessThan);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbQuestion);
 
 
 
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbSpaceBar);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbClear);
-            CommandManager.RegisterClassCommandBinding(typeof(KeyboardControl), CbClose);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbSpaceBar);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbClear);
+            CommandManager.RegisterClassCommandBinding(typeof(KeyBoard), CbClose);
             #endregion
         }
         /// <summary>
@@ -719,45 +718,45 @@ namespace SreenControl
         {
             if (e.Command == PadCmd1)
             {
-                KeyboardControl.TouchScreenText += "1";
+                KeyBoard.TouchScreenText += "1";
             }
             else if (e.Command == PadCmd2)
             {
-                KeyboardControl.TouchScreenText += "2";
+                KeyBoard.TouchScreenText += "2";
 
             }
             else if (e.Command == PadCmd3)
             {
-                KeyboardControl.TouchScreenText += "3";
+                KeyBoard.TouchScreenText += "3";
 
             }
             else if (e.Command == PadCmd4)
             {
-                KeyboardControl.TouchScreenText += "4";
+                KeyBoard.TouchScreenText += "4";
             }
             else if (e.Command == PadCmd5)
             {
-                KeyboardControl.TouchScreenText += "5";
+                KeyBoard.TouchScreenText += "5";
             }
             else if (e.Command == PadCmd6)
             {
-                KeyboardControl.TouchScreenText += "6";
+                KeyBoard.TouchScreenText += "6";
             }
             else if (e.Command == PadCmd7)
             {
-                KeyboardControl.TouchScreenText += "7";
+                KeyBoard.TouchScreenText += "7";
             }
             else if (e.Command == PadCmd8)
             {
-                KeyboardControl.TouchScreenText += "8";
+                KeyBoard.TouchScreenText += "8";
             }
             else if (e.Command == PadCmd9)
             {
-                KeyboardControl.TouchScreenText += "9";
+                KeyBoard.TouchScreenText += "9";
             }
             else if (e.Command == PadCmd0)
             {
-                KeyboardControl.TouchScreenText += "0";
+                KeyBoard.TouchScreenText += "0";
             }
             else if (e.Command == PadCmdDot)
             {
@@ -776,7 +775,7 @@ namespace SreenControl
             }
             else if (e.Command == PadCmdClear)//Last row
             {
-                KeyboardControl.TouchScreenText = null;
+                KeyBoard.TouchScreenText = null;
             }
             else if (e.Command == PadCmdClose)
             {
@@ -799,11 +798,11 @@ namespace SreenControl
 
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "`";
+                    KeyBoard.TouchScreenText += "`";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "~";
+                    KeyBoard.TouchScreenText += "~";
                     ShiftFlag = false;
                 }
             }
@@ -811,11 +810,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "1";
+                    KeyBoard.TouchScreenText += "1";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "!";
+                    KeyBoard.TouchScreenText += "!";
                     ShiftFlag = false;
                 }
 
@@ -824,11 +823,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "2";
+                    KeyBoard.TouchScreenText += "2";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "@";
+                    KeyBoard.TouchScreenText += "@";
                     ShiftFlag = false;
                 }
 
@@ -837,11 +836,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "3";
+                    KeyBoard.TouchScreenText += "3";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "#";
+                    KeyBoard.TouchScreenText += "#";
                     ShiftFlag = false;
                 }
 
@@ -850,11 +849,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "4";
+                    KeyBoard.TouchScreenText += "4";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "$";
+                    KeyBoard.TouchScreenText += "$";
                     ShiftFlag = false;
                 }
 
@@ -863,11 +862,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "5";
+                    KeyBoard.TouchScreenText += "5";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "%";
+                    KeyBoard.TouchScreenText += "%";
                     ShiftFlag = false;
                 }
 
@@ -876,11 +875,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "6";
+                    KeyBoard.TouchScreenText += "6";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "^";
+                    KeyBoard.TouchScreenText += "^";
                     ShiftFlag = false;
                 }
 
@@ -889,11 +888,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "7";
+                    KeyBoard.TouchScreenText += "7";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "&";
+                    KeyBoard.TouchScreenText += "&";
                     ShiftFlag = false;
                 }
 
@@ -902,11 +901,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "8";
+                    KeyBoard.TouchScreenText += "8";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "*";
+                    KeyBoard.TouchScreenText += "*";
                     ShiftFlag = false;
                 }
 
@@ -915,11 +914,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "9";
+                    KeyBoard.TouchScreenText += "9";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "(";
+                    KeyBoard.TouchScreenText += "(";
                     ShiftFlag = false;
                 }
 
@@ -928,11 +927,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "0";
+                    KeyBoard.TouchScreenText += "0";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += ")";
+                    KeyBoard.TouchScreenText += ")";
                     ShiftFlag = false;
                 }
 
@@ -941,11 +940,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "-";
+                    KeyBoard.TouchScreenText += "-";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "_";
+                    KeyBoard.TouchScreenText += "_";
                     ShiftFlag = false;
                 }
 
@@ -954,11 +953,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "=";
+                    KeyBoard.TouchScreenText += "=";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "+";
+                    KeyBoard.TouchScreenText += "+";
                     ShiftFlag = false;
                 }
 
@@ -969,15 +968,15 @@ namespace SreenControl
             }
             else if (e.Command == CmdBackspace)
             {
-                if (!string.IsNullOrEmpty(KeyboardControl.TouchScreenText))
+                if (!string.IsNullOrEmpty(KeyBoard.TouchScreenText))
                 {
-                    KeyboardControl.TouchScreenText = KeyboardControl.TouchScreenText.Substring(0, KeyboardControl.TouchScreenText.Length - 1);
+                    KeyBoard.TouchScreenText = KeyBoard.TouchScreenText.Substring(0, KeyBoard.TouchScreenText.Length - 1);
                 }
 
             }
             else if (e.Command == CmdTab)  //Second Row
             {
-                KeyboardControl.TouchScreenText += "     ";
+                KeyBoard.TouchScreenText += "     ";
             }
             else if (e.Command == CmdQ)
             {
@@ -1024,11 +1023,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "[";
+                    KeyBoard.TouchScreenText += "[";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "{";
+                    KeyBoard.TouchScreenText += "{";
                     ShiftFlag = false;
                 }
             }
@@ -1036,11 +1035,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "]";
+                    KeyBoard.TouchScreenText += "]";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "}";
+                    KeyBoard.TouchScreenText += "}";
                     ShiftFlag = false;
                 }
             }
@@ -1048,11 +1047,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += @"\";
+                    KeyBoard.TouchScreenText += @"\";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "|";
+                    KeyBoard.TouchScreenText += "|";
                     ShiftFlag = false;
                 }
             }
@@ -1110,11 +1109,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += ";";
+                    KeyBoard.TouchScreenText += ";";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += ":";
+                    KeyBoard.TouchScreenText += ":";
                     ShiftFlag = false;
                 }
 
@@ -1123,11 +1122,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "'";
+                    KeyBoard.TouchScreenText += "'";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += Char.ConvertFromUtf32(34);
+                    KeyBoard.TouchScreenText += Char.ConvertFromUtf32(34);
                     ShiftFlag = false;
                 }
 
@@ -1190,11 +1189,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += ",";
+                    KeyBoard.TouchScreenText += ",";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "<";
+                    KeyBoard.TouchScreenText += "<";
                     ShiftFlag = false;
                 }
 
@@ -1203,11 +1202,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += ".";
+                    KeyBoard.TouchScreenText += ".";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += ">";
+                    KeyBoard.TouchScreenText += ">";
                     ShiftFlag = false;
                 }
 
@@ -1216,11 +1215,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += "/";
+                    KeyBoard.TouchScreenText += "/";
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += "?";
+                    KeyBoard.TouchScreenText += "?";
                     ShiftFlag = false;
                 }
 
@@ -1228,11 +1227,11 @@ namespace SreenControl
             else if (e.Command == CmdSpaceBar)//Last row
             {
 
-                KeyboardControl.TouchScreenText += " ";
+                KeyBoard.TouchScreenText += " ";
             }
             else if (e.Command == CmdClear)//Last row
             {
-                KeyboardControl.TouchScreenText = null;
+                KeyBoard.TouchScreenText = null;
             }
             else if (e.Command == CmdClose)
             {
@@ -1253,24 +1252,24 @@ namespace SreenControl
             {
                 if (ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += char.ToLower(input).ToString();
+                    KeyBoard.TouchScreenText += char.ToLower(input).ToString();
                     ShiftFlag = false;
 
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += char.ToUpper(input).ToString();
+                    KeyBoard.TouchScreenText += char.ToUpper(input).ToString();
                 }
             }
             else
             {
                 if (!ShiftFlag)
                 {
-                    KeyboardControl.TouchScreenText += char.ToLower(input).ToString();
+                    KeyBoard.TouchScreenText += char.ToLower(input).ToString();
                 }
                 else
                 {
-                    KeyboardControl.TouchScreenText += char.ToUpper(input).ToString();
+                    KeyBoard.TouchScreenText += char.ToUpper(input).ToString();
                     ShiftFlag = false;
                 }
             }
@@ -1281,8 +1280,8 @@ namespace SreenControl
         {
             if (_CurrentControl != null && _InstanceObject != null)
             {
-                double h =_CurrentControl.ActualHeight;
-                Point virtualpoint = new Point(0, h/5);
+                double h = _CurrentControl.ActualHeight;
+                Point virtualpoint = new Point(0, h / 5);
                 Point Actualpoint = _CurrentControl.PointToScreen(virtualpoint);
                 if (WidthTouchKeyboard + Actualpoint.X > SystemParameters.VirtualScreenWidth)
                 {
@@ -1306,29 +1305,29 @@ namespace SreenControl
                 {
                     _InstanceObject.Top = Actualpoint.Y;
                 }
-
-                _InstanceObject.Show();
+                
+                //_InstanceObject.Show();
             }
 
 
         }
 
-        public static bool GetKeyboardControl(DependencyObject obj)
+        public static bool GetKeyBoard(DependencyObject obj)
         {
-            return (bool)obj.GetValue(KeyboardControlProperty);
+            return (bool)obj.GetValue(KeyBoardProperty);
         }
 
-        public static void SetKeyboardControl(DependencyObject obj, bool value)
+        public static void SetKeyBoard(DependencyObject obj, bool value)
         {
-            obj.SetValue(KeyboardControlProperty, value);
+            obj.SetValue(KeyBoardProperty, value);
         }
         /// <summary>
         /// 全键盘
         /// </summary>
-        public static readonly DependencyProperty KeyboardControlProperty =
-            DependencyProperty.RegisterAttached("KeyboardControl", typeof(bool), typeof(KeyboardControl), new UIPropertyMetadata(default(bool), KeyboardControlPropertyChanged));
+        public static readonly DependencyProperty KeyBoardProperty =
+            DependencyProperty.RegisterAttached("KeyBoard", typeof(bool), typeof(KeyBoard), new UIPropertyMetadata(default(bool), KeyBoardPropertyChanged));
 
-        static void KeyboardControlPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        static void KeyBoardPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement host = sender as FrameworkElement;
             KeyMode.Add(host, true);
@@ -1341,18 +1340,18 @@ namespace SreenControl
         }
         public static bool GetKeyPadControl(DependencyObject obj)
         {
-            return (bool)obj.GetValue(KeyboardControlProperty);
+            return (bool)obj.GetValue(KeyBoardProperty);
         }
 
         public static void SetKeyPadControl(DependencyObject obj, bool value)
         {
-            obj.SetValue(KeyboardControlProperty, value);
+            obj.SetValue(KeyBoardProperty, value);
         }
         /// <summary>
         /// 小键盘
         /// </summary>
         public static readonly DependencyProperty KeyPadControlProperty =
-            DependencyProperty.RegisterAttached("KeyPadControl", typeof(bool), typeof(KeyboardControl), new UIPropertyMetadata(default(bool), KeyPadControlPropertyChanged));
+            DependencyProperty.RegisterAttached("KeyPadControl", typeof(bool), typeof(KeyBoard), new UIPropertyMetadata(default(bool), KeyPadControlPropertyChanged));
 
         static void KeyPadControlPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
@@ -1400,9 +1399,9 @@ namespace SreenControl
                 {
                     if (ct is Window)
                     {
-                        ((Window)ct).LocationChanged += new EventHandler(KeyboardControl_LocationChanged);
-                        ((Window)ct).Activated += new EventHandler(KeyboardControl_Activated);
-                        ((Window)ct).Deactivated += new EventHandler(KeyboardControl_Deactivated);
+                        ((Window)ct).LocationChanged += new EventHandler(KeyBoard_LocationChanged);
+                        ((Window)ct).Activated += new EventHandler(KeyBoard_Activated);
+                        ((Window)ct).Deactivated += new EventHandler(KeyBoard_Deactivated);
                         break;
                     }
                     ct = (FrameworkElement)ct.Parent;
@@ -1410,11 +1409,11 @@ namespace SreenControl
 
                 if (ct == null)
                 {
-                    host.GotFocus += new RoutedEventHandler(KeyboardControl_Activated);
-                    host.LostFocus += new RoutedEventHandler(KeyboardControl_Deactivated);
+                    host.GotFocus += new RoutedEventHandler(KeyBoard_Activated);
+                    host.LostFocus += new RoutedEventHandler(KeyBoard_Deactivated);
                 }
 
-                _InstanceObject = new KeyboardControl();
+                //_InstanceObject = new KeyBoard();
                 _InstanceObject.AllowsTransparency = true;
                 _InstanceObject.WindowStyle = WindowStyle.None;
                 _InstanceObject.ShowInTaskbar = false;
@@ -1428,14 +1427,14 @@ namespace SreenControl
         }
 
 
-        static void KeyboardControl_Deactivated(object sender, EventArgs e)
+        static void KeyBoard_Deactivated(object sender, EventArgs e)
         {
             if (_InstanceObject != null)
             {
                 _InstanceObject.Topmost = false;
             }
         }
-        static void KeyboardControl_Deactivated(object sender, RoutedEventArgs e)
+        static void KeyBoard_Deactivated(object sender, RoutedEventArgs e)
         {
             if (_InstanceObject != null)
             {
@@ -1443,7 +1442,7 @@ namespace SreenControl
             }
         }
 
-        static void KeyboardControl_Activated(object sender, EventArgs e)
+        static void KeyBoard_Activated(object sender, EventArgs e)
         {
             if (_InstanceObject != null)
             {
@@ -1451,7 +1450,7 @@ namespace SreenControl
             }
         }
 
-        static void KeyboardControl_Activated(object sender, RoutedEventArgs e)
+        static void KeyBoard_Activated(object sender, RoutedEventArgs e)
         {
             if (_InstanceObject != null)
             {
@@ -1460,7 +1459,7 @@ namespace SreenControl
         }
 
 
-        static void KeyboardControl_LocationChanged(object sender, EventArgs e)
+        static void KeyBoard_LocationChanged(object sender, EventArgs e)
         {
             syncchild();
         }
@@ -1656,45 +1655,5 @@ namespace SreenControl
             }
         }
     }
-    public class ButtonProperty
-    {
-        private Brush buttonBackground;
-        public Brush ButtonBackground
-        {
-            get
-            { return buttonBackground; }
-            set
-            {
-                buttonBackground = value;
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ButtonBackground"));
-            }
-        }
 
-        public Brush ButtonForeground { get => buttonForeground; set => buttonForeground = value; }
-        public Brush ShadowForeground { get => shadowForeground; set => shadowForeground = value; }
-        public Brush ButtonBorderBrush { get => buttonBorderBrush; set => buttonBorderBrush = value; }
-        public double ButtonBorderThickness { get => buttonBorderThickness; set => buttonBorderThickness = value; }
-        public Brush MouseOverForeground { get => mouseOverForeground; set => mouseOverForeground = value; }
-        public Brush MouseOverBackground { get => mouseOverBackground; set => mouseOverBackground = value; }
-        public Brush PressedBackground { get => pressedBackground; set => pressedBackground = value; }
-        public Double ButtonFontSize { get => buttonFontSize; set => buttonFontSize = value; }
-        public CornerRadius ButtonCornerRadius { get => buttonCornerRadius; set => buttonCornerRadius = value; }
-        public CornerRadius BoardCornerRadius { get => boardCornerRadius; set => boardCornerRadius = value; }
-        public Brush FocusedBorderBrush { get => focusedBorderBrush; set => focusedBorderBrush = value; }
-        public Brush BoardBackground { get => boardBackground; set => boardBackground = value; }
-        public bool Keyboard { get; internal set; }
-
-        Brush buttonForeground;
-        Brush shadowForeground;
-        Brush buttonBorderBrush;
-        double buttonBorderThickness;
-        Brush mouseOverForeground;
-        Brush mouseOverBackground;
-        Brush pressedBackground;
-        Double buttonFontSize;
-        Brush boardBackground;
-        CornerRadius boardCornerRadius;
-        CornerRadius buttonCornerRadius;
-        Brush focusedBorderBrush;
-    }
 }

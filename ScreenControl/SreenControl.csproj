@@ -63,6 +63,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyBoard.xaml.cs">
+      <DependentUpon>KeyBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KeyboardControl.xaml.cs">
       <DependentUpon>KeyboardControl.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="KeyBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="KeyboardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
