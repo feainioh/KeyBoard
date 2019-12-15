@@ -23,32 +23,13 @@ namespace SreenControl
         public KeyBoard()
         {
             InitializeComponent();
-            this.DataContext = this;
+            //this.DataContext = this;
             SetCommandBinding();
             this.Width = WidthTouchKeyboard;
             this.Height = HeightTouchKeyboard;
+
         }
         static ButtonProperty ButtonProperty = new ButtonProperty();
-        //键盘大小
-        static Dictionary<FrameworkElement, bool> KeyMode = new Dictionary<FrameworkElement, bool>();
-        //键盘按键圆角
-        static Dictionary<FrameworkElement, CornerRadius> ButtonCorner = new Dictionary<FrameworkElement, CornerRadius>();
-        //键盘圆角
-        static Dictionary<FrameworkElement, CornerRadius> BoardCorner = new Dictionary<FrameworkElement, CornerRadius>();
-        //键盘按键背景色
-        static Dictionary<FrameworkElement, Brush> ButtonBackground = new Dictionary<FrameworkElement, Brush>();
-        //键盘按键前景色
-        static Dictionary<FrameworkElement, Brush> ButtonForeground = new Dictionary<FrameworkElement, Brush>();
-        //阴影前景色
-        static Dictionary<FrameworkElement, Brush> ShadowForeground = new Dictionary<FrameworkElement, Brush>();
-        //悬停前景色
-        static Dictionary<FrameworkElement, Brush> MouseOverForeground = new Dictionary<FrameworkElement, Brush>();
-        //悬停背景色
-        static Dictionary<FrameworkElement, Brush> MouseOverBackground = new Dictionary<FrameworkElement, Brush>();
-        //点击背景色
-        static Dictionary<FrameworkElement, Brush> PressedBackground = new Dictionary<FrameworkElement, Brush>();
-        //键盘背景色
-        static Dictionary<FrameworkElement, Brush> BoardBackground = new Dictionary<FrameworkElement, Brush>();
         #region Property & Variable & Constructor
 
         #region 键盘按钮样式
@@ -70,10 +51,6 @@ namespace SreenControl
         private static void Callback_ChangeBackground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ButtonProperty.ButtonBackground = (Brush)e.NewValue;
-
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!ButtonBackground.ContainsKey(frameworkElement))
-                ButtonBackground.Add(frameworkElement, (Brush)e.NewValue);
         }
 
         public static Brush GetButtonForeground(DependencyObject obj)
@@ -94,10 +71,6 @@ namespace SreenControl
         private static void CallBack_ButtonForeground(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {
             ButtonProperty.ButtonForeground = (Brush)baseValue.NewValue;
-
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!ButtonForeground.ContainsKey(frameworkElement))
-                ButtonForeground.Add(frameworkElement, (Brush)baseValue.NewValue);
         }
 
         public static Brush GetShadowForeground(DependencyObject obj)
@@ -119,9 +92,6 @@ namespace SreenControl
         {
             ButtonProperty.ShadowForeground = (Brush)e.NewValue;
 
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!ShadowForeground.ContainsKey(frameworkElement))
-                ShadowForeground.Add(frameworkElement, (Brush)e.NewValue);
         }
         #region 弃用属性
 
@@ -185,9 +155,6 @@ namespace SreenControl
         {
             ButtonProperty.MouseOverForeground = (Brush)e.NewValue;
 
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!MouseOverForeground.ContainsKey(frameworkElement))
-                MouseOverForeground.Add(frameworkElement, (Brush)e.NewValue);
         }
 
         public static Brush GetMouseOverBackground(DependencyObject obj)
@@ -209,9 +176,6 @@ namespace SreenControl
         {
             ButtonProperty.MouseOverBackground = (Brush)e.NewValue;
 
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!MouseOverBackground.ContainsKey(frameworkElement))
-                MouseOverBackground.Add(frameworkElement, (Brush)e.NewValue);
         }
 
         public static Brush GetPressedBackground(DependencyObject obj)
@@ -232,9 +196,6 @@ namespace SreenControl
         private static void CallBack_PressedForeground(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ButtonProperty.PressedBackground = (Brush)e.NewValue;
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!PressedBackground.ContainsKey(frameworkElement))
-                PressedBackground.Add(frameworkElement, (Brush)e.NewValue);
         }
 
         public static Brush GetFocusedBorderBrush(DependencyObject obj)
@@ -280,9 +241,6 @@ namespace SreenControl
         {
             ButtonProperty.BoardBackground = (Brush)e.NewValue;
 
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!BoardBackground.ContainsKey(frameworkElement))
-                BoardBackground.Add(frameworkElement, (Brush)e.NewValue);
         }
 
         #endregion
@@ -306,9 +264,7 @@ namespace SreenControl
 
         private static void CallBack_CornerRadius(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!ButtonCorner.ContainsKey(frameworkElement))
-                ButtonCorner.Add(frameworkElement, (CornerRadius)e.NewValue);
+            ButtonProperty.ButtonCornerRadius = (CornerRadius)e.NewValue;
         }
 
         public static CornerRadius GetBoardCornerRadius(DependencyObject obj)
@@ -329,9 +285,7 @@ namespace SreenControl
 
         private static void CallBack_BoardCornerRadius(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            FrameworkElement frameworkElement = d as FrameworkElement;
-            if (!BoardCorner.ContainsKey(frameworkElement))
-                BoardCorner.Add(frameworkElement, (CornerRadius)e.NewValue);
+            ButtonProperty.BoardCornerRadius = (CornerRadius)e.NewValue;
         }
         #endregion
 
@@ -1305,7 +1259,7 @@ namespace SreenControl
                 {
                     _InstanceObject.Top = Actualpoint.Y;
                 }
-                
+
                 //_InstanceObject.Show();
             }
 
@@ -1330,7 +1284,8 @@ namespace SreenControl
         static void KeyBoardPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement host = sender as FrameworkElement;
-            KeyMode.Add(host, true);
+
+            ButtonProperty.Keyboard = true;
             if (host != null)
             {
                 host.GotFocus += new RoutedEventHandler(OnGotFocus);
@@ -1356,12 +1311,12 @@ namespace SreenControl
         static void KeyPadControlPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement host = sender as FrameworkElement;
-            KeyMode.Add(host, false);
-            if (host != null)
-            {
-                host.GotFocus += new RoutedEventHandler(OnGotFocus);
-                host.LostFocus += new RoutedEventHandler(OnLostFocus);
-            }
+            ButtonProperty.Keyboard = false;
+            //if (host != null)
+            //{
+            //    host.GotFocus += new RoutedEventHandler(OnGotFocus);
+            //    host.LostFocus += new RoutedEventHandler(OnLostFocus);
+            //}
 
         }
 
@@ -1491,6 +1446,7 @@ namespace SreenControl
 
         #endregion
 
+        static bool IsSetted = false;
         /// <summary>
         /// 用于设置界面样式
         /// </summary>
@@ -1498,146 +1454,149 @@ namespace SreenControl
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Window win = sender as Window;
-            //使用全键盘模式
-            if (KeyMode[_CurrentControl])
+            if (!IsSetted)
             {
-                Grid g = win.FindName("main_grid") as Grid;
-                ColumnDefinitionCollection columns = g.ColumnDefinitions;
-                columns[1].Width = new GridLength(0);
-                columns[0].Width = GridLength.Auto;
-            }
-            else
-            {
-                //小键盘模式
-                win.Width = 300;
-                Grid g = win.FindName("main_grid") as Grid;
-                ColumnDefinitionCollection columns = g.ColumnDefinitions;
-                columns[0].Width = new GridLength(0);
-
-            }
-            Border border = win.FindName("border_Win") as Border;
-            Grid grid = win.FindName("btn_grid") as Grid;
-            //设置背景和圆角
-            if (BoardBackground.ContainsKey(_CurrentControl))
-            {
-                border.Background = BoardBackground[_CurrentControl];
-                grid.Background = BoardBackground[_CurrentControl];
-            }
-            if (BoardCorner.ContainsKey(_CurrentControl))
-                border.CornerRadius = BoardCorner[_CurrentControl];
-            //获取样式
-            Style shadow = win.Resources["ShadowStyle"] as Style;
-            Style buttonStyle = win.Resources["InformButton"] as Style;
-            Style borderstyle = win.Resources["ButtonBorderStyle"] as Style;
-            #region 设置按钮样式
-
-            #region 设置按钮边框
-
-            Style newBorder = new Style();
-            for (int i = borderstyle.Setters.Count - 1; i > 0; i--)
-            {
-                Setter set = borderstyle.Setters[i] as Setter;
-                Setter newsetter = new Setter();
-                newsetter.Property = set.Property;
-                newsetter.Value = set.Value;
-                newsetter.TargetName = set.TargetName;
-                if (newsetter.Property.Name == "CornerRadius" && ButtonCorner.ContainsKey(_CurrentControl)) newsetter.Value = ButtonCorner[_CurrentControl];
-                borderstyle.Setters.RemoveAt(i);
-                borderstyle.Setters.Add(newsetter);
-            }
-
-            #endregion
-            //设置样式
-            foreach (Setter set in shadow.Setters)
-            {
-                if (set.Property.Name == "Control.Foreground" && ShadowForeground.ContainsKey(_CurrentControl)) set.Value = ShadowForeground[_CurrentControl];
-            }
-            foreach (Setter set in buttonStyle.Setters)
-            {
-                if (set.Property.Name == "Foreground" && ButtonForeground.ContainsKey(_CurrentControl)) set.Value = ButtonForeground[_CurrentControl];
-                if (set.Property.Name == "Background" && ButtonBackground.ContainsKey(_CurrentControl)) set.Value = ButtonBackground[_CurrentControl];
-                if (set.Property.Name == "Template")
+                UserControl win = sender as UserControl;
+                //使用全键盘模式
+                if (ButtonProperty.Keyboard)
                 {
-                    ControlTemplate triggers = (ControlTemplate)set.Value;
-                    foreach (Trigger trigger in triggers.Triggers)
+                    Grid g = win.FindName("main_grid") as Grid;
+                    ColumnDefinitionCollection columns = g.ColumnDefinitions;
+                    columns[1].Width = new GridLength(0);
+                    columns[0].Width = GridLength.Auto;
+                }
+                else
+                {
+                    //小键盘模式
+                    win.Width = 300;
+                    Grid g = win.FindName("main_grid") as Grid;
+                    ColumnDefinitionCollection columns = g.ColumnDefinitions;
+                    columns[0].Width = new GridLength(0);
+
+                }
+                Border border = win.FindName("border_Win") as Border;
+                Grid grid = win.FindName("btn_grid") as Grid;
+                //设置背景和圆角
+                border.Background = ButtonProperty.BoardBackground;
+                grid.Background = ButtonProperty.BoardBackground;
+
+
+                border.CornerRadius = ButtonProperty.BoardCornerRadius;
+                //获取样式
+                Style shadow = win.Resources["ShadowStyle"] as Style;
+                Style buttonStyle = win.Resources["InformButton"] as Style;
+                Style borderstyle = win.Resources["ButtonBorderStyle"] as Style;
+
+                IsSetted = true;
+                #region 设置按钮样式
+
+                #region 设置按钮边框
+
+                Style newBorder = new Style();
+                for (int i = borderstyle.Setters.Count - 1; i > 0; i--)
+                {
+                    Setter set = borderstyle.Setters[i] as Setter;
+                    Setter newsetter = new Setter();
+                    newsetter.Property = set.Property;
+                    newsetter.Value = set.Value;
+                    newsetter.TargetName = set.TargetName;
+                    if (newsetter.Property.Name == "CornerRadius" && ButtonProperty.ButtonCornerRadius != null) newsetter.Value = ButtonProperty.ButtonCornerRadius;
+                    borderstyle.Setters.RemoveAt(i);
+                    borderstyle.Setters.Add(newsetter);
+                }
+
+                #endregion
+                //设置样式
+                foreach (Setter set in shadow.Setters)
+                {
+                    if (set.Property.Name == "Control.Foreground" && ButtonProperty.ShadowForeground != null) set.Value = ButtonProperty.ShadowForeground;
+                }
+                foreach (Setter set in buttonStyle.Setters)
+                {
+                    if (set.Property.Name == "Foreground" && ButtonProperty.ButtonForeground != null) set.Value = ButtonProperty.ButtonForeground;
+                    if (set.Property.Name == "Background" && ButtonProperty.ButtonBackground != null) set.Value = ButtonProperty.ButtonBackground;
+                    if (set.Property.Name == "Template")
                     {
-                        if (trigger.Property.Name == "IsMouseOver")
+                        ControlTemplate triggers = (ControlTemplate)set.Value;
+                        foreach (Trigger trigger in triggers.Triggers)
                         {
-                            foreach (Setter setter in trigger.Setters)
+                            if (trigger.Property.Name == "IsMouseOver")
                             {
-                                //if (setter.Property.Name == "BorderBrush" && MouseOverForeground[_CurrentControl] != null) setter.Value = ButtonProperty.ButtonBorderBrush;
-                                if (setter.Property.Name == "Foreground" && MouseOverForeground.ContainsKey(_CurrentControl)) setter.Value = MouseOverForeground[_CurrentControl];
-                                if (setter.Property.Name == "Background" && MouseOverBackground.ContainsKey(_CurrentControl)) setter.Value = MouseOverBackground[_CurrentControl];
+                                foreach (Setter setter in trigger.Setters)
+                                {
+                                    //if (setter.Property.Name == "BorderBrush" && MouseOverForeground[_CurrentControl] != null) setter.Value = ButtonProperty.ButtonBorderBrush;
+                                    if (setter.Property.Name == "Foreground" && ButtonProperty.MouseOverForeground != null) setter.Value = ButtonProperty.MouseOverForeground;
+                                    if (setter.Property.Name == "Background" && ButtonProperty.MouseOverBackground != null) setter.Value = ButtonProperty.MouseOverBackground;
+                                }
                             }
-                        }
-                        if (trigger.Property.Name == "IsPressed")
-                        {
-                            foreach (Setter setter in trigger.Setters)
+                            if (trigger.Property.Name == "IsPressed")
                             {
-                                if (setter.Property.Name == "Background" && PressedBackground.ContainsKey(_CurrentControl)) setter.Value = PressedBackground[_CurrentControl];
+                                foreach (Setter setter in trigger.Setters)
+                                {
+                                    if (setter.Property.Name == "Background" && ButtonProperty.PressedBackground != null) setter.Value = ButtonProperty.PressedBackground;
+                                }
                             }
                         }
                     }
                 }
-            }
-            //获取按钮
-            StackPanel stackPanel = win.FindName("btn_collect_num") as StackPanel;
-            StackPanel stackPanel_q = win.FindName("btn_collect_q") as StackPanel;
-            StackPanel stackPanel_a = win.FindName("btn_collect_a") as StackPanel;
-            StackPanel stackPanel_z = win.FindName("btn_collect_z") as StackPanel;
-            StackPanel stackPanel_func = win.FindName("btn_collect_func") as StackPanel;
-            //设置按钮样式
-            foreach (var control in stackPanel.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                //获取按钮
+                StackPanel stackPanel = win.FindName("btn_collect_num") as StackPanel;
+                StackPanel stackPanel_q = win.FindName("btn_collect_q") as StackPanel;
+                StackPanel stackPanel_a = win.FindName("btn_collect_a") as StackPanel;
+                StackPanel stackPanel_z = win.FindName("btn_collect_z") as StackPanel;
+                StackPanel stackPanel_func = win.FindName("btn_collect_func") as StackPanel;
+                //设置按钮样式
+                foreach (var control in stackPanel.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
 
+                    }
                 }
-            }
-            foreach (var control in stackPanel_q.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                foreach (var control in stackPanel_q.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
+                    }
                 }
-            }
-            foreach (var control in stackPanel_a.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                foreach (var control in stackPanel_a.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
+                    }
                 }
-            }
-            foreach (var control in stackPanel_z.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                foreach (var control in stackPanel_z.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
+                    }
                 }
-            }
-            foreach (var control in stackPanel_func.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                foreach (var control in stackPanel_func.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
+                    }
                 }
-            }
-            foreach (var control in grid.Children)
-            {
-                if (control.GetType() == typeof(Button))
+                foreach (var control in grid.Children)
                 {
-                    Button b = control as Button;
-                    b.Style = buttonStyle;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button b = control as Button;
+                        b.Style = buttonStyle;
+                    }
                 }
+                #endregion
             }
-            #endregion
         }
 
         private static void Win_MouseUp(object sender, MouseButtonEventArgs e)

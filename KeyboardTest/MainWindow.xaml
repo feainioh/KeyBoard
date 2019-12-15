@@ -30,17 +30,17 @@
                      b:KeyboardControl.BoardCornerRadius="14"
                      b:KeyboardControl.ShadowForeground="AliceBlue"
                      TabIndex="0"  ></TextBox>
-                <PasswordBox FontSize="30" Width="300"  b:KeyboardControl.KeyPadControl="False"
-                     b:KeyboardControl.BoardBackground="#FF404040"
-                     b:KeyboardControl.ButtonBackground="#FF636363"
-                     b:KeyboardControl.ButtonForeground="#FF9F9F9F"
-                     b:KeyboardControl.PressedBackground="#FF9F9F9F"
-                     b:KeyboardControl.MouseOverBackground="#FFD7D5D5"
-                     b:KeyboardControl.MouseOverForeground="#FF795B5B"
-                     b:KeyboardControl.ButtonCornerRadius="4"
-                     b:KeyboardControl.ShadowForeground="AliceBlue"></PasswordBox>
-            <Popup StaysOpen="False" >
-                
+                <PasswordBox x:Name="passwoard" FontSize="30" Width="300" ></PasswordBox>
+            <Popup StaysOpen="true" IsOpen="{Binding ElementName=passwoard,Path=IsKeyboardFocused,Mode=OneWay}" PopupAnimation="Scroll" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=passwoard}" >
+                <b:KeyBoard  b:KeyBoard.KeyPadControl="True"
+                    b:KeyBoard.BoardBackground="#FF404040"
+                     b:KeyBoard.ButtonBackground="#FF636363"
+                     b:KeyBoard.ButtonForeground="#FF9F9F9F"
+                     b:KeyBoard.PressedBackground="#FF9F9F9F"
+                     b:KeyBoard.MouseOverBackground="#FFD7D5D5"
+                     b:KeyBoard.MouseOverForeground="#FF795B5B"
+                     b:KeyBoard.ButtonCornerRadius="4"
+                     b:KeyBoard.ShadowForeground="AliceBlue"></b:KeyBoard>
             </Popup>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">

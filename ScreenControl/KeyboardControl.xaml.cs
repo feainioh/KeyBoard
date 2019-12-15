@@ -1282,7 +1282,7 @@ namespace SreenControl
             if (_CurrentControl != null && _InstanceObject != null)
             {
                 double h =_CurrentControl.ActualHeight;
-                Point virtualpoint = new Point(0, h/5);
+                Point virtualpoint = new Point(0, h);
                 Point Actualpoint = _CurrentControl.PointToScreen(virtualpoint);
                 if (WidthTouchKeyboard + Actualpoint.X > SystemParameters.VirtualScreenWidth)
                 {
@@ -1669,7 +1669,7 @@ namespace SreenControl
                 //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ButtonBackground"));
             }
         }
-
+        
         public Brush ButtonForeground { get => buttonForeground; set => buttonForeground = value; }
         public Brush ShadowForeground { get => shadowForeground; set => shadowForeground = value; }
         public Brush ButtonBorderBrush { get => buttonBorderBrush; set => buttonBorderBrush = value; }
