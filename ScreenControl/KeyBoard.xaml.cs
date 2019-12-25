@@ -1231,41 +1231,6 @@ namespace SreenControl
         }
 
 
-        private static void syncchild()
-        {
-            if (_CurrentControl != null && _InstanceObject != null)
-            {
-                double h = _CurrentControl.ActualHeight;
-                Point virtualpoint = new Point(0, h / 5);
-                Point Actualpoint = _CurrentControl.PointToScreen(virtualpoint);
-                if (WidthTouchKeyboard + Actualpoint.X > SystemParameters.VirtualScreenWidth)
-                {
-                    double difference = WidthTouchKeyboard + Actualpoint.X - SystemParameters.VirtualScreenWidth;
-                    _InstanceObject.Left = Actualpoint.X - difference;
-                }
-                else if (!(Actualpoint.X > 1))
-                {
-                    _InstanceObject.Left = 1;
-                }
-                else
-                {
-                    _InstanceObject.Left = Actualpoint.X;
-                }
-
-                if (HeightTouchKeyboard + Actualpoint.Y > SystemParameters.VirtualScreenHeight)
-                {
-                    _InstanceObject.Top = _CurrentControl.PointToScreen(new Point(0, 0)).Y - HeightTouchKeyboard - 3;
-                }
-                else
-                {
-                    _InstanceObject.Top = Actualpoint.Y;
-                }
-
-                //_InstanceObject.Show();
-            }
-
-
-        }
 
         public static bool GetKeyBoard(DependencyObject obj)
         {
@@ -1313,13 +1278,29 @@ namespace SreenControl
         {
             FrameworkElement host = sender as FrameworkElement;
             ButtonProperty.Keyboard = false;
-            //if (host != null)
-            //{
-            //    host.GotFocus += new RoutedEventHandler(OnGotFocus);
-            //    host.LostFocus += new RoutedEventHandler(OnLostFocus);
-            //}
 
         }
+        public string  Value
+        {
+            get { return (string )GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(string), typeof(KeyBoard), new UIPropertyMetadata(string.Empty));
+
+
+
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(KeyBoard), new UIPropertyMetadata(false));
 
         public string BoardValue
         {
@@ -1334,63 +1315,6 @@ namespace SreenControl
 
 
 
-
-        static void OnGotFocus(object sender, RoutedEventArgs e)
-        {
-            Control host = sender as Control;
-
-            //_PreviousTextBoxBackgroundBrush = host.Background;
-            _PreviousTextBoxBorderBrush = host.BorderBrush;
-            _PreviousTextBoxBorderThickness = host.BorderThickness;
-
-            //host.Background = Brushes.Cyan;
-            host.BorderBrush = Brushes.Blue;
-            host.BorderThickness = new Thickness(2);
-
-
-            _CurrentControl = host;
-            //FrameworkElement _parent = _CurrentControl.Parent as FrameworkElement;
-            //while (_parent != null)
-            //{
-            //    _parent = _parent.Parent as FrameworkElement;
-            //    if (_parent.Parent == null) break;
-            //}
-            //Window win = _parent as Window;
-            //win.MouseUp += Win_MouseUp;
-
-            if (_InstanceObject == null)
-            {
-                FrameworkElement ct = host;
-                while (ct != null)
-                {
-                    if (ct is Window)
-                    {
-                        ((Window)ct).LocationChanged += new EventHandler(KeyBoard_LocationChanged);
-                        ((Window)ct).Activated += new EventHandler(KeyBoard_Activated);
-                        ((Window)ct).Deactivated += new EventHandler(KeyBoard_Deactivated);
-                        break;
-                    }
-                    ct = (FrameworkElement)ct.Parent;
-                }
-
-                if (ct == null)
-                {
-                    host.GotFocus += new RoutedEventHandler(KeyBoard_Activated);
-                    host.LostFocus += new RoutedEventHandler(KeyBoard_Deactivated);
-                }
-
-                //_InstanceObject = new KeyBoard();
-                //_InstanceObject.AllowsTransparency = true;
-                _InstanceObject.WindowStyle = WindowStyle.None;
-                _InstanceObject.ShowInTaskbar = false;
-                _InstanceObject.Topmost = true;
-
-                host.LayoutUpdated += new EventHandler(tb_LayoutUpdated);
-            }
-
-
-
-        }
 
 
         static void KeyBoard_Deactivated(object sender, EventArgs e)
@@ -1424,16 +1348,6 @@ namespace SreenControl
             }
         }
 
-
-        static void KeyBoard_LocationChanged(object sender, EventArgs e)
-        {
-            syncchild();
-        }
-
-        static void tb_LayoutUpdated(object sender, EventArgs e)
-        {
-            syncchild();
-        }
 
 
 

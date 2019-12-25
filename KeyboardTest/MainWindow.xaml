@@ -31,8 +31,8 @@
                      b:KeyboardControl.ShadowForeground="AliceBlue"
                      TabIndex="0"  ></TextBox>
                 <PasswordBox x:Name="passwoard" FontSize="30" Width="300" ></PasswordBox>
-            <Popup StaysOpen="True"  IsOpen="{Binding ElementName=passwoard,Path=IsKeyboardFocused,Mode=OneWay}" PopupAnimation="Scroll" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=passwoard}" >
-                <b:KeyBoard b:KeyBoard.KeyBoard="True" b:KeyBoard.BoardBackground="BlanchedAlmond" b:KeyBoard.BoardCornerRadius="4" b:KeyBoard.ButtonCornerRadius="5">
+            <Popup StaysOpen="False"  IsOpen="{Binding Path=IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType=RadioButton, AncestorLevel=1}}"  PopupAnimation="Scroll" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=passwoard}" >
+                <b:KeyBoard b:KeyBoard.KeyBoard="True" IsChecked="{Binding Path=IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType=RadioButton, AncestorLevel=1}, Mode=TwoWay}" Value="{Binding Path=TerminalNo, Mode=TwoWay}" b:KeyBoard.BoardBackground="BlanchedAlmond" b:KeyBoard.BoardCornerRadius="4" b:KeyBoard.ButtonCornerRadius="5">
                     
                 </b:KeyBoard>
             </Popup>
