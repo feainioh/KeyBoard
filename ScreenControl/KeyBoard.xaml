@@ -77,7 +77,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Vertical"  Grid.Column="0">
                     <StackPanel x:Name="btn_collect_num" Orientation="Horizontal">
-
+                        
                         <Button   Command="local:KeyBoard.CmdTlide" VerticalContentAlignment="Top" HorizontalContentAlignment="Left"  Width="50" Height="50">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" >
                                 <TextBlock    HorizontalAlignment="Left" VerticalAlignment="Top"   >~</TextBlock>
@@ -277,7 +277,7 @@
 
                         <Button   VerticalContentAlignment="Top"  Command="local:KeyBoard.CmdCapsLock"  HorizontalContentAlignment="Left"  Width="102.5" Height="50">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" >
-                                <TextBlock    HorizontalAlignment="Left" VerticalAlignment="Top"   >Caps Lock</TextBlock>
+                                <TextBlock    HorizontalAlignment="Left" VerticalAlignment="Top">Caps Lock</TextBlock>
                                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom"   ></TextBlock>
                             </StackPanel>
                         </Button>

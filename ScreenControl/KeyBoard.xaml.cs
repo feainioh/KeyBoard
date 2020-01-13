@@ -495,7 +495,7 @@ namespace SreenControl
         /// <summary>
         /// 设置按钮命令绑定
         /// </summary>
-        private static void SetCommandBinding()
+        private  void SetCommandBinding()
         {
 
             #region 小键盘
@@ -669,49 +669,49 @@ namespace SreenControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        static void RunCommand_Pad(object sender, ExecutedRoutedEventArgs e)
+        public void RunCommand_Pad(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == PadCmd1)
             {
-                KeyBoard.TouchScreenText += "1";
+                Value += "1";
             }
             else if (e.Command == PadCmd2)
             {
-                KeyBoard.TouchScreenText += "2";
+                Value += "2";
 
             }
             else if (e.Command == PadCmd3)
             {
-                KeyBoard.TouchScreenText += "3";
+                Value += "3";
 
             }
             else if (e.Command == PadCmd4)
             {
-                KeyBoard.TouchScreenText += "4";
+                Value += "4";
             }
             else if (e.Command == PadCmd5)
             {
-                KeyBoard.TouchScreenText += "5";
+                Value += "5";
             }
             else if (e.Command == PadCmd6)
             {
-                KeyBoard.TouchScreenText += "6";
+                Value += "6";
             }
             else if (e.Command == PadCmd7)
             {
-                KeyBoard.TouchScreenText += "7";
+                Value += "7";
             }
             else if (e.Command == PadCmd8)
             {
-                KeyBoard.TouchScreenText += "8";
+                Value += "8";
             }
             else if (e.Command == PadCmd9)
             {
-                KeyBoard.TouchScreenText += "9";
+                Value += "9";
             }
             else if (e.Command == PadCmd0)
             {
-                KeyBoard.TouchScreenText += "0";
+                Value += "0";
             }
             else if (e.Command == PadCmdDot)
             {
@@ -719,32 +719,20 @@ namespace SreenControl
             }
             else if (e.Command == PadCmdEnter)
             {
-                if (_InstanceObject != null)
-                {
-                    _InstanceObject.Close();
-                    _InstanceObject = null;
-                }
-                _CurrentControl.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                //System.Windows.Input.Keyboard.ClearFocus();
+                IsChecked = false;
 
             }
             else if (e.Command == PadCmdClear)//Last row
             {
-                KeyBoard.TouchScreenText = null;
+                Value = null;
             }
             else if (e.Command == PadCmdClose)
             {
-                //OnLostFocus(_CurrentControl, null);
-                if (_InstanceObject != null)
-                {
-                    _InstanceObject.Close();
-                    _InstanceObject = null;
-                }
-                _CurrentControl.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                IsChecked = false;
             }
         }
         //按钮点击事件
-        static void RunCommand(object sender, ExecutedRoutedEventArgs e)
+        public void RunCommand(object sender, ExecutedRoutedEventArgs e)
         {
 
             if (e.Command == CmdTlide)  //First Row
@@ -753,11 +741,11 @@ namespace SreenControl
 
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "`";
+                    Value += "`";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "~";
+                    Value += "~";
                     ShiftFlag = false;
                 }
             }
@@ -765,11 +753,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "1";
+                    Value += "1";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "!";
+                    Value += "!";
                     ShiftFlag = false;
                 }
 
@@ -778,11 +766,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "2";
+                    Value += "2";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "@";
+                    Value += "@";
                     ShiftFlag = false;
                 }
 
@@ -791,11 +779,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "3";
+                    Value += "3";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "#";
+                    Value += "#";
                     ShiftFlag = false;
                 }
 
@@ -804,11 +792,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "4";
+                    Value += "4";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "$";
+                    Value += "$";
                     ShiftFlag = false;
                 }
 
@@ -817,11 +805,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "5";
+                    Value += "5";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "%";
+                    Value += "%";
                     ShiftFlag = false;
                 }
 
@@ -830,11 +818,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "6";
+                    Value += "6";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "^";
+                    Value += "^";
                     ShiftFlag = false;
                 }
 
@@ -843,11 +831,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "7";
+                    Value += "7";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "&";
+                    Value += "&";
                     ShiftFlag = false;
                 }
 
@@ -856,11 +844,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "8";
+                    Value += "8";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "*";
+                    Value += "*";
                     ShiftFlag = false;
                 }
 
@@ -869,11 +857,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "9";
+                    Value += "9";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "(";
+                    Value += "(";
                     ShiftFlag = false;
                 }
 
@@ -882,11 +870,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "0";
+                    Value += "0";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += ")";
+                    Value += ")";
                     ShiftFlag = false;
                 }
 
@@ -895,11 +883,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "-";
+                    Value += "-";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "_";
+                    Value += "_";
                     ShiftFlag = false;
                 }
 
@@ -908,30 +896,30 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "=";
+                    Value += "=";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "+";
+                    Value += "+";
                     ShiftFlag = false;
                 }
 
             }
             else if (e.Command == CmdDot)
             {
-                TouchScreenText += ".";
+                Value += ".";
             }
             else if (e.Command == CmdBackspace)
             {
-                if (!string.IsNullOrEmpty(KeyBoard.TouchScreenText))
+                if (!string.IsNullOrEmpty(Value))
                 {
-                    KeyBoard.TouchScreenText = KeyBoard.TouchScreenText.Substring(0, KeyBoard.TouchScreenText.Length - 1);
+                    Value = Value.Substring(0, Value.Length - 1);
                 }
 
             }
             else if (e.Command == CmdTab)  //Second Row
             {
-                KeyBoard.TouchScreenText += "     ";
+                Value += "     ";
             }
             else if (e.Command == CmdQ)
             {
@@ -978,11 +966,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "[";
+                    Value += "[";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "{";
+                    Value += "{";
                     ShiftFlag = false;
                 }
             }
@@ -990,11 +978,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "]";
+                    Value += "]";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "}";
+                    Value += "}";
                     ShiftFlag = false;
                 }
             }
@@ -1002,11 +990,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += @"\";
+                    Value += @"\";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "|";
+                    Value += "|";
                     ShiftFlag = false;
                 }
             }
@@ -1064,11 +1052,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += ";";
+                    Value += ";";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += ":";
+                    Value += ":";
                     ShiftFlag = false;
                 }
 
@@ -1077,11 +1065,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "'";
+                    Value += "'";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += Char.ConvertFromUtf32(34);
+                    Value += Char.ConvertFromUtf32(34);
                     ShiftFlag = false;
                 }
 
@@ -1089,13 +1077,7 @@ namespace SreenControl
             }
             else if (e.Command == CmdEnter)
             {
-                if (_InstanceObject != null)
-                {
-                    _InstanceObject.Close();
-                    _InstanceObject = null;
-                }
-                _CurrentControl.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                //System.Windows.Input.Keyboard.ClearFocus();
+                IsChecked = false;
 
             }
             else if (e.Command == CmdShift) //Fourth Row
@@ -1144,11 +1126,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += ",";
+                    Value += ",";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "<";
+                    Value += "<";
                     ShiftFlag = false;
                 }
 
@@ -1157,11 +1139,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += ".";
+                    Value += ".";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += ">";
+                    Value += ">";
                     ShiftFlag = false;
                 }
 
@@ -1170,11 +1152,11 @@ namespace SreenControl
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += "/";
+                    Value += "/";
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += "?";
+                    Value += "?";
                     ShiftFlag = false;
                 }
 
@@ -1182,49 +1164,43 @@ namespace SreenControl
             else if (e.Command == CmdSpaceBar)//Last row
             {
 
-                KeyBoard.TouchScreenText += " ";
+                Value += " ";
             }
             else if (e.Command == CmdClear)//Last row
             {
-                KeyBoard.TouchScreenText = null;
+                Value = null;
             }
             else if (e.Command == CmdClose)
             {
-                OnLostFocus(_CurrentControl, null);
-                if (_InstanceObject != null)
-                {
-                    _InstanceObject.Close();
-                    _InstanceObject = null;
-                }
-                // _CurrentControl.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last));
+                IsChecked = false;
             }
         }
         #endregion
         #region Main Functionality
-        private static void AddKeyBoardINput(char input)
+        private  void AddKeyBoardINput(char input)
         {
             if (CapsLockFlag)
             {
                 if (ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += char.ToLower(input).ToString();
+                    Value += char.ToLower(input).ToString();
                     ShiftFlag = false;
 
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += char.ToUpper(input).ToString();
+                    Value += char.ToUpper(input).ToString();
                 }
             }
             else
             {
                 if (!ShiftFlag)
                 {
-                    KeyBoard.TouchScreenText += char.ToLower(input).ToString();
+                    Value += char.ToLower(input).ToString();
                 }
                 else
                 {
-                    KeyBoard.TouchScreenText += char.ToUpper(input).ToString();
+                    Value += char.ToUpper(input).ToString();
                     ShiftFlag = false;
                 }
             }
@@ -1300,18 +1276,7 @@ namespace SreenControl
 
         // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register("IsChecked", typeof(bool), typeof(KeyBoard), new UIPropertyMetadata(false));
-
-        public string BoardValue
-        {
-            get { return (string)GetValue(BoardValueProperty); }
-            set { SetValue(BoardValueProperty, value); }
-        }
-        /// <summary>
-        /// 值属性
-        /// </summary>
-        public static readonly DependencyProperty BoardValueProperty =
-            DependencyProperty.RegisterAttached("BoardValue", typeof(string), typeof(KeyBoard), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(KeyBoard), new UIPropertyMetadata(true));
 
 
 
@@ -1347,28 +1312,6 @@ namespace SreenControl
                 _InstanceObject.Topmost = true;
             }
         }
-
-
-
-
-        static void OnLostFocus(object sender, RoutedEventArgs e)
-        {
-
-            Control host = sender as Control;
-            //host.Background = _PreviousTextBoxBackgroundBrush;
-            host.BorderBrush = _PreviousTextBoxBorderBrush;
-            host.BorderThickness = _PreviousTextBoxBorderThickness;
-
-            if (_InstanceObject != null)
-            {
-                _InstanceObject.Close();
-                _InstanceObject = null;
-            }
-
-
-
-        }
-
         #endregion
 
         static bool IsSetted = false;
@@ -1525,20 +1468,7 @@ namespace SreenControl
                 }
         }
 
-        private static void Win_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Window win = sender as Window;
-            Point p = e.GetPosition(win);
-            if (win.CaptureMouse())
-            {
-                //鼠标不在键盘范围内
-                if (!_InstanceObject.CaptureMouse())
-                {
-                    //不在控件内 
-                    OnLostFocus(_CurrentControl, null);
-                }
-            }
-        }
+       
     }
 
 }

@@ -29,13 +29,7 @@
                      b:KeyboardControl.ButtonCornerRadius="50"
                      b:KeyboardControl.BoardCornerRadius="14"
                      b:KeyboardControl.ShadowForeground="AliceBlue"
-                     TabIndex="0"  ></TextBox>
-                <PasswordBox x:Name="passwoard" FontSize="30" Width="300" ></PasswordBox>
-            <Popup StaysOpen="False"  IsOpen="{Binding Path=IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType=RadioButton, AncestorLevel=1}}"  PopupAnimation="Scroll" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=passwoard}" >
-                <b:KeyBoard b:KeyBoard.KeyBoard="True" IsChecked="{Binding Path=IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType=RadioButton, AncestorLevel=1}, Mode=TwoWay}" Value="{Binding Path=TerminalNo, Mode=TwoWay}" b:KeyBoard.BoardBackground="BlanchedAlmond" b:KeyBoard.BoardCornerRadius="4" b:KeyBoard.ButtonCornerRadius="5">
-                    
-                </b:KeyBoard>
-            </Popup>
+                     TabIndex="0"  ></TextBox> 
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Button FontSize="30" Content="Test:" TabIndex="10" Background="#FFFF5050" b:KeyboardControl.KeyboardControl="True"></Button>

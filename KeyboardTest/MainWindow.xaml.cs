@@ -20,8 +20,33 @@ namespace KeyboardTest
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        private string  terminalNo;
+
+
+        public string  TerminalNo
+        {
+            get { return terminalNo; }
+            set
+            {
+                if (value != terminalNo)
+                {
+                    terminalNo = value;
+                    OnPropertyChanged("TerminalNo");
+                }
+            }
+        }
+
+
         public MainWindow()
         {
             InitializeComponent();
